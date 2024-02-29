@@ -4,6 +4,7 @@ import com.aallam.openai.api.BetaOpenAI
 import com.aallam.openai.api.assistant.AssistantId
 import com.aallam.openai.api.assistant.AssistantTool
 import com.aallam.openai.api.core.Status
+import com.aallam.openai.api.core.Usage
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.api.thread.ThreadId
 import kotlinx.serialization.SerialName
@@ -94,6 +95,12 @@ public data class Run(
      * The list of File IDs the assistant used for this run.
      */
     @SerialName("file_ids") val fileIds: List<String>? = null,
+
+    /**
+     * Usage statistics related to the run. This value will be null if the run is not in a terminal
+     * state (i.e. in_progress, queued, etc.)
+     */
+    @SerialName("usage") public val usage: Usage? = null,
 
     /**
      * Set of 16 key-value pairs that can be attached to an object.
